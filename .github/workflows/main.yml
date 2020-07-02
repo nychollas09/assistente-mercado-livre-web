@@ -1,0 +1,54 @@
+name: [Assistente] Mercado Livre - Web
+on:
+  push:
+    branches:
+      - master
+    paths-ignore:
+      - "**.md"
+
+jobs:
+  build:
+    name: React Build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2.3.1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: "12.x"
+
+      - name: Installing dependencies
+        run: yarn --frozen-lockfile
+
+      - name: Build a SPA React Application
+        run: yarn build
+
+      - name: Upload build-app-artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: build-app-artifact
+          path: build
+
+  deploy:
+    needs: build
+    name: React Deploy on Surge
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2.3.1
+
+      - uses: actions/setup-node@v1
+        with:
+          node-version: "12.x"
+
+      - name: Download build-app-artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: build-app-artifact
+          path: ./build
+
+      - name: Install surge and Fire deployment
+        uses: dswistowski/surge-sh-action@v1
+        with:
+          domain: ${{ secrets.SURGE_DOMAIN }}
+          project: ./build
+          login: ${{ secrets.SURGE_LOGIN }}
+          token: ${{ secrets.SURGE_TOKEN }}
