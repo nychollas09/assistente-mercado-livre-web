@@ -5,6 +5,7 @@ export class AuthenticatedInformation {
   public scope: string;
   public user_id: number;
   public refresh_token: string;
+  public code: string;
 
   constructor(init?: Partial<AuthenticatedInformation>) {
     Object.assign(this, init);

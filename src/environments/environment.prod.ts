@@ -1,7 +1,7 @@
 export const environment = {
-  clientIdAuthMercadoLivre: 8587534690912589,
-  secretKeyAuthMeli: 'gMuocldPjIf7HGtw5FxjcEFQtgeAzDin',
-  redirectUri: 'https://assistente-mercado-livre.surge.sh',
+  clientIdAuthMeli: 6703173026254753,
+  secretKeyAuthMeli: 'OuLlI2W0e11hMaK3PSvmOnLr9nFKttjN',
+  redirectUri: 'https://assistente-mercado-livre.surge.sh/authenticated-meli',
   apiMercadoLivre: 'https://api.mercadolibre.com',
   production: true,
 };

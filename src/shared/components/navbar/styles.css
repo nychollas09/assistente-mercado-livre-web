@@ -1,0 +1,16 @@
+.navbar {
+  font-weight: inherit;
+  font-size: 14px;
+  background-color: var(--primary-color);
+}
+
+.logo-meli {
+  background-image: url('../../../assets/imgs/logo-mercado-livre.png');
+  width: 134px;
+  height: 34px;
+}
+
+.frete-meli {
+  max-width: 340px;
+  max-height: 39px;
+}
