@@ -8,7 +8,7 @@ on:
 
 jobs:
   build:
-    name: React Build
+    name: Angular Build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2.3.1
@@ -16,21 +16,24 @@ jobs:
         with:
           node-version: '12.x'
 
+      - name: Installing Angular CLI
+        run: yarn global add @angular/cli
+
       - name: Installing dependencies
         run: yarn --frozen-lockfile
 
-      - name: Build a SPA React Application
+      - name: Build a SPA Angular Application
         run: yarn build
 
       - name: Upload build-app-artifact
         uses: actions/upload-artifact@v2
         with:
           name: build-app-artifact
-          path: build
+          path: dist/assistente-mercado-livre
 
   deploy:
     needs: build
-    name: React Deploy on Surge
+    name: Angular Deploy on Surge
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2.3.1

@@ -1,0 +1,14 @@
+<div class="navbar w-full z-30 top-0 text-black">
+  <app-container aditionalClass="flex flex-col mt-0 py-2">
+    <div class="flex flex-1 justify-between">
+      <img class="logo-meli" />
+      <div class="flex">
+        <div *ngIf="isAuthenticated" class="mr-3 self-center">
+          <i class="fas fa-user self-center"></i> Nome
+        </div>
+        <button *ngIf="!isAuthenticated" class="mr-3">Crie a sua conta</button>
+        <button (click)="handleRedirectEntrar()" class="mr-3">Entre</button>
+      </div>
+    </div>
+  </app-container>
+</div>
