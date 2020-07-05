@@ -3,7 +3,7 @@ import { Observable } from 'rxjs/internal/Observable';
 import { ObservableUtil } from '../shared/utils/observable-util';
 import { AuthenticateInformation } from '../domain/interfaces/authenticate-information';
 import { AuthenticatedInformation } from '../domain/models/authenticated-information';
-import { environment } from '../environments/environment';
+import { environment } from '../environments/environment.prod';
 import { RequestUtil } from '../shared/utils/request-util';
 import { map, catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
@@ -37,6 +37,10 @@ export function ApiAuthMeli$(
     )
     .pipe(
       map((ajaxResponse) => ajaxResponse.response),
+      map(
+        (authenticatedInformation: AuthenticatedInformation) =>
+          new AuthenticatedInformation({ ...authenticatedInformation, code }),
+      ),
       ObservableUtil.instaceResultObject(AuthenticatedInformation),
       catchError(({ response }: { response: AuthenticationMeliError }) => {
         if (
