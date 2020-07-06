@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
-import { AuthService } from 'src/app/service/auth.service';
 import { AuthenticatedInformation } from 'src/app/domain/models/authenticated-information';
+import { AuthService } from 'src/app/service/auth.service';
 
 const REFERENCE_CODE_QUERY_PARAM = 'code';
 
@@ -27,8 +27,17 @@ export class AuthenticatedMeliComponent implements OnInit {
         .subscribe((authenticatedInformation: AuthenticatedInformation) => {
           if (authenticatedInformation) {
             this.authService.authenticatedInformation = authenticatedInformation;
+            this.getUserInformation(authenticatedInformation.access_token);
           }
         });
     });
+  }
+
+  private getUserInformation(accessToken: string) {
+    this.authService
+      .getUserInformation(accessToken)
+      .subscribe((userInformation) => {
+        this.authService.userInformation = userInformation;
+      });
   }
 }

@@ -1,6 +1,41 @@
 <img
   *ngIf="!showMelia"
-  class="melia"
+  class="melia-min"
   src="../../../../assets/imgs/Melia-09.png"
   (click)="handleShowMelia()"
 />
+
+<div class="overlay" *ngIf="showMelia"></div>
+
+<div
+  class="max-w-sm rounded-lg shadow-lg dialog-melia bg-white"
+  *ngIf="showMelia"
+>
+  <div class="px-6 py-4 flex flex-col">
+    <i class="fas fa-times exit-icon self-end" (click)="handleExistClick()"></i>
+    <div class="flex">
+      <div class="flex flex-col" style="width: 60%;">
+        <div class="dialog-content">
+          <p class="break-words text-sm font-semibold">
+            {{ mensagem }}
+          </p>
+        </div>
+        <div>
+          <button
+            class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
+          >
+            Sim
+          </button>
+          <button
+            class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow ml-4"
+          >
+            Não
+          </button>
+        </div>
+      </div>
+      <div style="width: 40%;">
+        <img src="../../../../assets/imgs/Melia-07.png" class="melia-full" />
+      </div>
+    </div>
+  </div>
+</div>

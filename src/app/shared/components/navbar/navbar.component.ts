@@ -26,6 +26,10 @@ export class NavbarComponent {
     this.router.navigate([EnumMainRoute.AUTH_MELI]);
   }
 
+  public get userName(): string {
+    return this.authService.userInformation?.first_name;
+  }
+
   public get isAuthenticated(): boolean {
     return !!this.authService.authenticatedInformation;
   }

@@ -7,6 +7,7 @@ export const environment = {
   secretKeyAuthMeli: 'gMuocldPjIf7HGtw5FxjcEFQtgeAzDin',
   redirectUri: 'http://localhost:4200/authenticated-meli',
   apiMercadoLivre: 'https://api.mercadolibre.com',
+  apiAssistenteMeli: 'https://meli-assistente.herokuapp.com/api',
   production: false,
 };
 

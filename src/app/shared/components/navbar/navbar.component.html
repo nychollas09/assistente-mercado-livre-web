@@ -4,7 +4,7 @@
       <img class="logo-meli" />
       <div class="flex">
         <div *ngIf="isAuthenticated" class="mr-3 self-center">
-          <i class="fas fa-user self-center"></i> Nome
+          <i class="fas fa-user self-center"></i> {{ userName }}
         </div>
         <button (click)="handleRedirectEntrar()" class="mr-3">Entre</button>
       </div>

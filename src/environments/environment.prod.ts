@@ -3,5 +3,6 @@ export const environment = {
   secretKeyAuthMeli: 'XRsEVovFS7IgVtFhSKMaIyUFGwAR8lKX',
   redirectUri: 'https://assistente-mercado-livre.surge.sh/authenticated-meli',
   apiMercadoLivre: 'https://api.mercadolibre.com',
+  apiAssistenteMeli: 'https://meli-assistente.herokuapp.com/api',
   production: true,
 };

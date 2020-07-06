@@ -33,7 +33,7 @@ jobs:
 
   deploy:
     needs: build
-    name: Angular Deploy on Surge
+    name: Angular Deploy on Heroku
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2.3.1
@@ -48,17 +48,5 @@ jobs:
           name: build-app-artifact
           path: ./build
 
-      - name: Install heroku
-        env:
-          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-        run: heroku container:login
-
       - name: Fire Deployment
-        env:
-          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-        run: heroku container:push -a assistente-mercado-livre-web ./build
-
-      - name: Release
-        env:
-          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-        run: heroku container:release -a assistente-mercado-livre-web ./build
+        run: heroku container:push -app assistente-mercado-livre-web ./build
