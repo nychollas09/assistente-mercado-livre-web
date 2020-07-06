@@ -47,7 +47,7 @@ jobs:
           path: ./build
 
       - uses: actions/checkout@v2
-        name: Install surge and Fire deployment
+      - name: Install surge and Fire deployment
         uses: AhsanAyaz/angular-deploy-gh-pages-actions
         with:
           github_access_token: ${{ secrets.ACCESS_TOKEN }}
