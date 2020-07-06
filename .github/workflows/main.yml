@@ -33,7 +33,7 @@ jobs:
 
   deploy:
     needs: build
-    name: Angular Deploy on Heroku
+    name: Angular Deploy on Surge
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2.3.1
