@@ -48,5 +48,10 @@ jobs:
           name: build-app-artifact
           path: ./build
 
-      - name: Fire Deployment
-        run: heroku container:push -app assistente-mercado-livre-web ./build
+      - name: Fire deployment
+        uses: dswistowski/surge-sh-action@v1
+        with:
+          domain: ${{ secrets.SURGE_DOMAIN }}
+          project: ./build
+          login: ${{ secrets.SURGE_LOGIN }}
+          token: ${{ secrets.SURGE_TOKEN }}
